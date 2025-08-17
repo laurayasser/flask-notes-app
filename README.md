@@ -49,31 +49,32 @@ On the EC2 instance:
 # Update packages
    ```bash
    sudo yum update -y
-
+   ```
 # Install git and docker
    ```bash
    sudo yum install -y git docker
-
+   ```
 # Install Docker Compose
    ```bash
    sudo curl -L "https://github.com/docker/compose/releases/download/v2.27.0/docker-compose-$(uname -s)-$(uname -m)" -o        /usr/local/bin/docker-compose
    sudo chmod +x /usr/local/bin/docker-compose
    sudo ln -s /usr/local/bin/docker-compose /usr/bin/docker-compose
-
+   ```
 # Start Docker service
    ```bash
    sudo systemctl start docker
    sudo systemctl enable docker
-
+   ```
 # Verify
    ```bash
    docker --version
    docker-compose --version
+   ```
 ### 3️⃣ Clone the Project
    ```bash
    git clone https://github.com/<your-username>/flask-notes-app.git
    cd flask-notes-app
-
+   ```
 #### 4️⃣ Project Files Explained
 
 Dockerfile → Builds Flask container
@@ -85,12 +86,14 @@ db/init/init.sql → Initializes MySQL database & table
 app/ → Flask code and templates
 
 ### 5️⃣ Run the Application
-docker-compose up -d --build
+   ```bash
+   docker-compose up -d --build
+   ```
 Check containers:
 
    ```bash
    docker ps
-
+   ```
 You should see:
 
 web → Flask app, port 5000
@@ -117,4 +120,5 @@ Build app → Containerize → Orchestrate → Deploy to Cloud
 Use environment variables for config (no secrets in code)
 Persist database with volumes
 Add healthchecks for reliability
+
 
