@@ -46,26 +46,26 @@ AWS EC2 Instance
 ### 2️⃣ Install Dependencies
 
 On the EC2 instance:
-# Update packages
+#### Update packages
    ```bash
    sudo yum update -y
    ```
-# Install git and docker
+#### Install git and docker
    ```bash
    sudo yum install -y git docker
    ```
-# Install Docker Compose
+#### Install Docker Compose
    ```bash
    sudo curl -L "https://github.com/docker/compose/releases/download/v2.27.0/docker-compose-$(uname -s)-$(uname -m)" -o        /usr/local/bin/docker-compose
    sudo chmod +x /usr/local/bin/docker-compose
    sudo ln -s /usr/local/bin/docker-compose /usr/bin/docker-compose
    ```
-# Start Docker service
+#### Start Docker service
    ```bash
    sudo systemctl start docker
    sudo systemctl enable docker
    ```
-# Verify
+#### Verify
    ```bash
    docker --version
    docker-compose --version
@@ -75,7 +75,7 @@ On the EC2 instance:
    git clone https://github.com/<your-username>/flask-notes-app.git
    cd flask-notes-app
    ```
-#### 4️⃣ Project Files Explained
+### 4️⃣ Project Files Explained
 
 Dockerfile → Builds Flask container
 
@@ -104,15 +104,16 @@ db → MySQL, port 3306
 Web UI → http://<EC2_PUBLIC_IP>:5000
 
 ### 7️⃣ Stop the App
-docker-compose down
-
-Testing & Verification
+   ```bash
+   docker-compose down
+   ```
+### Testing & Verification
 
 Add a note → It should appear in the list
 Restart containers → Notes persist (volume storage)
 Health check → /healthz returns 200 OK if DB is connected
 
-✅ Summary
+### ✅ Summary
 
 This project demonstrates a real-world DevOps workflow:
 
@@ -120,5 +121,6 @@ Build app → Containerize → Orchestrate → Deploy to Cloud
 Use environment variables for config (no secrets in code)
 Persist database with volumes
 Add healthchecks for reliability
+
 
 
